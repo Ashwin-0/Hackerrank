@@ -33,3 +33,31 @@ int main() {
     }
     return 0;
 }
+
+//Strings
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	// Complete the program
+    string a,b,c,temp;
+   // int len=a.size();
+  //  int len1=b.size();
+   // cout<<len<<""<<len1;
+
+    cin>>a>>b;
+     int len=a.size();
+    int len1=b.size();
+    cout<<len<<" "<<len1<<endl;
+    cout<<a+b<<endl;
+    temp[0]=a[0];
+    a[0]=b[0];
+    b[0]=temp[0];
+    
+  
+    cout<<a<<" "<<b;
+
+    return 0;
+}
