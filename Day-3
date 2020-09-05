@@ -1,0 +1,35 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+
+    int n,s;
+    cin>>n>>s;
+
+    int **a=new int*[n];
+    int temp;
+    for(int i=0;i<n;i++)
+    {
+        cin>>temp;
+        a[i]=new int[temp];
+        for(int j=0;j<temp;j++)
+        cin>>a[i][j];
+
+    }
+
+    int search;
+    int pos;
+
+    for(int i=0;i<s;i++)
+    {
+        cin>>search>>pos;
+        cout<<a[search][pos]<<endl;
+    }
+    return 0;
+}
