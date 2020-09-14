@@ -1,0 +1,133 @@
+//Exception Handling
+#include <iostream>
+#include <stdexcept>
+
+using namespace std;
+
+int largest_proper_divisor(int n) {
+    if (n == 0) {
+        throw invalid_argument("largest proper divisor is not defined for n=0");
+    }
+    if (n == 1) {
+        throw invalid_argument("largest proper divisor is not defined for n=1");
+    }
+    for (int i = n/2; i >= 1; --i) {
+        if (n % i == 0) {
+            return i;
+        }
+    }
+    return -1; // will never happen
+}
+
+void process_input(int n) {
+    try
+    {
+    int d = largest_proper_divisor(n);
+    cout << "result=" << d << endl;
+    }
+    catch(invalid_argument &e)
+    {
+        cout<<e.what()<<endl;
+    
+
+    }    cout<<"returning control flow to caller";
+}
+
+
+int main() {
+    int n;
+    cin >> n;
+    process_input(n);
+    return 0;
+}
+//Box it
+
+#include<bits/stdc++.h>
+
+using namespace std;
+class Box
+{
+    int length,breadth,height;
+    public:
+    Box()
+    {
+        length=0;
+        breadth=0;
+        height=0;
+    }
+    Box(int l,int b,int h)
+    {
+        length=l;
+        breadth=b;
+        height=h;
+    }
+    Box(Box &b)
+    {
+        length=b.length;
+        breadth=b.breadth;
+        height=b.height;
+    }
+    int getLength()
+    {
+        return length;
+    }
+    int getHeight()
+    {
+        return height;
+    }
+    int getBreadth()
+    {
+        return breadth;
+    }
+    long long CalculateVolume()
+    {
+        return (long long)length*breadth*height;
+    }
+    bool operator<(Box &b)
+    {
+        bool a=true;
+
+        if(length<b.length )
+        return a;
+
+        else if(breadth<b.breadth&&length==b.length)
+        return a;
+
+        else if(height<b.height&&breadth<b.breadth&&length<b.length)
+        return a;
+
+        else
+        return false;
+        }
+
+    friend ostream& operator<< (ostream& output, const Box& B)
+    {
+        output << B.length << " " << B.breadth << " " << B.height;
+        return output;
+    }
+
+};
+
+        
+
+
+
+// The class should have the following functions : 
+
+// Constructors: 
+// Box();
+// Box(int,int,int);
+// Box(Box);
+
+
+// int getLength(); // Return box's length
+// int getBreadth (); // Return box's breadth
+// int getHeight ();  //Return box's height
+// long long CalculateVolume(); // Return the volume of the box
+
+//Overload operator < as specified
+//bool operator<(Box& b)
+
+//Overload operator << as specified
+//ostream& operator<<(ostream& out, Box& B)
+
