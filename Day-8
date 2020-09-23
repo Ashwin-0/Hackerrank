@@ -1,0 +1,102 @@
+//preprocessor
+
+#define toStr(s) #s
+#define INF 10000000
+#define io(r) cin>>r
+#define foreach(v,i) for(int i=0;i<v.size();i++)
+#define FUNCTION(name,op) void name(int &x,int y){if(y op x)x=y;}
+#include <iostream>
+#include <vector>
+using namespace std;
+
+#if !defined toStr || !defined io || !defined FUNCTION || !defined INF
+#error Missing preprocessor definitions
+#endif 
+
+FUNCTION(minimum, <)
+FUNCTION(maximum, >)
+
+int main(){
+	int n; cin >> n;
+	vector<int> v(n);
+	foreach(v, i) {
+		io(v)[i];
+	}
+	int mn = INF;
+	int mx = -INF;
+	foreach(v, i) {
+		minimum(mn, v[i]);
+		maximum(mx, v[i]);
+	}
+	int ans = mx - mn;
+	cout << toStr(Result =) <<' '<< ans;
+	return 0;
+
+}
+// overloading operators
+
+//Operator Overloading
+
+#include<iostream>
+
+using namespace std;
+
+class Complex
+{
+public:
+    int a,b;
+    void input(string s)
+    {
+        int v1=0;
+        int i=0;
+        while(s[i]!='+')
+        {
+            v1=v1*10+s[i]-'0';
+            i++;
+        }
+        while(s[i]==' ' || s[i]=='+'||s[i]=='i')
+        {
+            i++;
+        }
+        int v2=0;
+        while(i<s.length())
+        {
+            v2=v2*10+s[i]-'0';
+            i++;
+        }
+        a=v1;
+        b=v2;
+    }
+};
+
+//Overload operators + and << for the class complex
+//+ should add two complex numbers as (a+ib) + (c+id) = (a+c) + i(b+d)
+//<< should print a complex number in the format "a+ib"
+
+//Overload operators + and << for the class complex
+//+ should add two complex numbers as (a+ib) + (c+id) = (a+c) + i(b+d)
+//<< should print a complex number in the format "a+ib"
+Complex operator +(Complex a,Complex b){
+    Complex z;
+    z.a=a.a+b.a;
+    z.b=a.b+b.b;
+    return z;
+}
+
+ostream& operator <<(ostream &out,Complex z){
+    out<<z.a;
+    out<<"+i";
+    out<<z.b;
+    return out;
+}
+int main()
+{
+    Complex x,y;
+    string s1,s2;
+    cin>>s1;
+    cin>>s2;
+    x.input(s1);
+    y.input(s2);
+    Complex z=x+y;
+    cout<<z<<endl;
+}
